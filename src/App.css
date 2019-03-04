@@ -15,3 +15,24 @@
   padding: 10px;
   font-size: 16px;
 }
+
+.playground {
+  border: 2px solid;
+}
+
+.playground .vertical-playground {
+  width: 30%;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.playground .horizontal-playground .number-fields input {
+  font-size: 2rem;
+  text-align: left;
+  margin: 25px;
+}
+
+.playground .horizontal-playground {
+  width: 70%;
+  display: inline-block;
+}
