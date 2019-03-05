@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import {arithmaticOperations as ArithmaticOperations} from './constants'
 import VerticalPlaygound from './VerticalPlayground';
-import HorizontalPlayground from './HorizontalPlayground';
 import Result from './Result';
 
 class Playground extends Component {
