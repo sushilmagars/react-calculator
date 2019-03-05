@@ -94,6 +94,8 @@ class Playground extends Component {
         return this.multiply(firstNumber, secondNumber)
       case 'division':
         return this.divide(firstNumber, secondNumber);
+      default:
+        return this.addition(firstNumber, secondNumber);
     }
   }
 
