@@ -75,6 +75,10 @@ class Playground extends Component {
   }
 
   divide(firstNumber, secondNumber) {
+    if (firstNumber === 0 && secondNumber === 0) {
+      return 'Cannot define zero by zero!';
+    }
+
     if (firstNumber !== undefined && secondNumber !== undefined) {
       return firstNumber / secondNumber;
     } else if (firstNumber !== undefined) {
@@ -111,14 +115,18 @@ class Playground extends Component {
     return (
       <div>        
         <div className="playground">
-           <VerticalPlaygound currentlySelectedUserOperation={this.state.currentOperation.operator}/>
-           <input 
-            type="text"
-            isfirstnumber="true"
-            value={this.state.firstNumber}
-            onChange={this.handleNumberChange}
-            onBlur={this.handleNumberBlur}/>
-           <input 
+          <label className="number-fields-title">Enter First Number</label>
+          <input
+          className="number-fields" 
+          type="text"
+          isfirstnumber="true"
+          value={this.state.firstNumber}
+          onChange={this.handleNumberChange}
+          onBlur={this.handleNumberBlur} />
+          <VerticalPlaygound currentlySelectedUserOperation={this.state.currentOperation.operator}/>
+          <label className="number-fields-title">Enter Second Number</label>
+          <input
+            className="number-fields" 
             type="text"
             isfirstnumber="false"
             value={this.state.secondNumber}

@@ -11,24 +11,26 @@ class CalculatorOperations extends Component {
   render() {
     return (
       <div className="calculator-operations">
-      {
-        Object
-          .keys(ArithmaticOperations)
-          .map((arithmaticOperation) => {
-            const DEFAULT_OPERATION_ID = 5;
-            const operationId = ArithmaticOperations[arithmaticOperation].operationId;
+        <div className="btn-group">
+          {
+            Object
+              .keys(ArithmaticOperations)
+              .map((arithmaticOperation) => {
+                const DEFAULT_OPERATION_ID = 5;
+                const operationId = ArithmaticOperations[arithmaticOperation].operationId;
 
-            if (operationId !== DEFAULT_OPERATION_ID) {
-              const operationType = ArithmaticOperations[arithmaticOperation].type;
+                if (operationId !== DEFAULT_OPERATION_ID) {
+                  const operationType = ArithmaticOperations[arithmaticOperation].type;
 
-              return <Operations 
-                key={operationId}
-                operationSelection={operationType}
-                updateUserChoice={this.props.updateUserSelection}
-              />;
-            }
-          })
-      }
+                  return <Operations 
+                    key={operationId}
+                    operationSelection={operationType}
+                    updateUserChoice={this.props.updateUserSelection}
+                  />;
+                }
+              })
+          }
+        </div>
       </div>
     );
   }

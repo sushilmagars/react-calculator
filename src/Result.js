@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function Result(props) {
-  return <div>
-    <label>{props.result}</label>
+  return <div className="result">
+    = <label>{props.result}</label>
   </div>
 }
