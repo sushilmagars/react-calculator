@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import './App.css';
 import CalculatorOperations from './CalculatorOperations';
 import Playground from './Playground';
-import {arithmaticOperations as OPERATIONS} from './constants';
+import {
+  arithmaticOperations as OPERATIONS,
+  content as CONTENT
+} from './constants';
 
 class App extends Component {
   constructor() {
@@ -17,13 +20,17 @@ class App extends Component {
   }
 
   render() {
-    const header = 'Calculator';
+    const header = CONTENT.header.toUpperCase();
 
     return (
-      <div className="App">
-        {header}
-        <CalculatorOperations updateUserSelection={this.updateUserSelection}/>
-        <Playground selectedOperation={this.state.userSelectedOperation}/>
+      <div className="app">
+        <div className="app-header">
+          {header}
+        </div>
+        <div className="app-content">
+          <CalculatorOperations updateUserSelection={this.updateUserSelection}/>
+          <Playground selectedOperation={this.state.userSelectedOperation}/>
+        </div>
       </div>
     );
   }

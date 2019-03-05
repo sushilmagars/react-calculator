@@ -11,6 +11,7 @@ class CalculatorOperations extends Component {
   render() {
     return (
       <div className="calculator-operations">
+        <label className="number-fields-title">Select action</label>
         <div className="btn-group">
           {
             Object

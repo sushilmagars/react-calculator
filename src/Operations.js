@@ -6,7 +6,7 @@ export default function Operations(props) {
   const operation = _.upperFirst(operationsMappings[props.operationSelection].type);
 
   return (
-    <button 
+    <button
       className="user-operation-selection"
       useroperationselection={props.operationSelection}
       onClick={props.updateUserChoice}>

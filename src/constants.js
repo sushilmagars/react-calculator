@@ -5,3 +5,7 @@ module.exports.arithmaticOperations = {
   division: {type: 'division', operationId: 4, operator: '/'},
   default: {type: 'addition', operationId: 5, operator: '+'}
 }
+
+module.exports.content = {
+  header: 'calculator'
+}

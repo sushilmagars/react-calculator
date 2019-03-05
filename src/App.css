@@ -1,4 +1,18 @@
-.App {
+.app {
+  margin: 0 auto;
+}
+
+.app-header {
+  text-align: center;
+  font-size: 2rem;
+  margin: 25px;
+  padding: 25px;
+  border: 2px solid #000080;
+  color: #000080;
+  border-radius: 15px;
+}
+
+.app-content {
   text-align: center;
   font-size: 2rem;
   margin: 25px;
@@ -8,24 +22,26 @@
 }
 
 .user-operation-selection {
-  margin: 20px;
+  margin: 15px 6px 15px 6px;
   padding: 10px;
   font-size: 16px;
-  width: 140px;
+  /* width: 8rem; */
   background: transparent;
   border: 2px solid #000080;
   box-sizing: border-box;
 }
 
 .operation-btn {
-  margin: 20px;
-  padding: 10px;
-  font-size: 16px;
-  width: 140px;
+  margin: 5px;
+  padding: 5px;
+  font-size: 20px;
+  font-weight: 800;
+  width: 40px;
   background: transparent;
-  border: 2px solid #000080;
+  border: 1px solid #000080;
   box-sizing: border-box;
   outline: 0;
+  border-radius: 15px;
 }
 
 .user-operation-selection:hover {
@@ -39,6 +55,13 @@
 .number-fields {
   text-align: center;
   font-size: 20px;
+  height: 28px;
+  border: 1px solid gray;
+  border-radius: 15px;
+}
+
+.number-fields:hover, .number-fields:active {
+  border-color: lightblue;
 }
 
 .number-fields:focus {
@@ -67,4 +90,10 @@
   display: block;
   margin-bottom: -4px;
   font-size: 16px;
+}
+
+@media screen and (max-width: 200px) {
+  .user-operation-selection {
+    width: 140px;
+  }
 }

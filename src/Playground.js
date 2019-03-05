@@ -113,7 +113,7 @@ class Playground extends Component {
     let result = this.calculateResult(this.state.firstNumber, this.state.secondNumber, this.state.currentOperation.type);
 
     return (
-      <div>        
+      <div>
         <div className="playground">
           <label className="number-fields-title">Enter First Number</label>
           <input
