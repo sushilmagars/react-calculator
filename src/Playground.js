@@ -15,41 +15,75 @@ class Playground extends Component {
       currentOperation: this.props.selectedOperation,
     }
 
-    this.handleFirstNumberChange = this.handleFirstNumberChange.bind(this);
-    this.handleSecondNumberChange = this.handleSecondNumberChange.bind(this);
+    this.handleNumberChange = this.handleNumberChange.bind(this);
+    this.handleNumberBlur = this.handleNumberBlur.bind(this);
     this.calculateResult = this.calculateResult.bind(this);
     this.addition = this.addition.bind(this);
-    this.handleFirstNumberBlur = this.handleFirstNumberBlur.bind(this);
-    this.handleSecondNumberBlur = this.handleSecondNumberBlur.bind(this);
+    this.substract = this.substract.bind(this);
+    this.multiply = this.multiply.bind(this);
+    this.divide = this.divide.bind(this);
   }
 
-  handleFirstNumberChange(event) {
-    let newNumber;
-
-    if (event.target.value) {
-      newNumber = Number(event.target.value);
+  handleNumberChange(event) {
+    let newNumber = event.target.value;
+    let isFirstNumber = event.target.getAttribute('isfirstnumber') === 'true';
+    let pattern = /[^0-9]/g;
+    newNumber = Number.isNaN(Number(newNumber)) ? Number(newNumber.replace(pattern, '')) : Number(newNumber);
+    
+    if (isFirstNumber) {
+      this.setState({firstNumber: newNumber});
+    } else {
+      this.setState({secondNumber: newNumber});
     }
-
-    this.setState({firstNumber: newNumber});
   }
 
-  handleFirstNumberBlur(event) {
+  handleNumberBlur(event) {
     let newNumber = Number(event.target.value);
-    this.setState({firstNumber: newNumber});
-  }
+    let isFirstNumber = event.target.getAttribute('isfirstnumber') === 'true';
 
-  handleSecondNumberChange(event) {
-    let newNumber = Number(event.target.value);
-    this.setState({secondNumber: newNumber});
-  }
-
-  handleSecondNumberBlur(event) {
-    let newNumber = Number(event.target.value);
-    this.setState({secondNumber: newNumber});
+    if (isFirstNumber) {
+      this.setState({firstNumber: newNumber});
+    } else {
+      this.setState({secondNumber: newNumber});
+    }
   }
 
   addition(firstNumber, secondNumber) {
-    return firstNumber + secondNumber;
+    if (firstNumber !== undefined && secondNumber !== undefined) {
+      return firstNumber + secondNumber;
+    } else if (firstNumber !== undefined) {
+      return firstNumber + 0;
+    } else if (secondNumber !== undefined) {
+      return 0 + secondNumber;
+    }
+  }
+
+  substract(firstNumber, secondNumber) {
+    if (firstNumber !== undefined && secondNumber !== undefined) {
+      return firstNumber - secondNumber;
+    } else if (firstNumber !== undefined) {
+      return firstNumber - 0;
+    } else if (secondNumber !== undefined) {
+      return 0 - secondNumber;
+    }
+  }
+
+  multiply(firstNumber, secondNumber) {
+    if (firstNumber !== undefined && secondNumber !== undefined) {
+      return firstNumber * secondNumber;
+    } else {
+      return firstNumber * 0;
+    }
+  }
+
+  divide(firstNumber, secondNumber) {
+    if (firstNumber !== undefined && secondNumber !== undefined) {
+      return firstNumber / secondNumber;
+    } else if (firstNumber !== undefined) {
+      return firstNumber / 0;
+    } else if (secondNumber !== undefined) {
+      return 0 / secondNumber;
+    }
   }
 
   calculateResult(firstNumber, secondNumber, operationType) {
@@ -57,11 +91,11 @@ class Playground extends Component {
       case 'addition':
         return this.addition(firstNumber, secondNumber);
       case 'substraction':
-        return firstNumber - secondNumber;
+        return this.substract(firstNumber, secondNumber);
       case 'multiplication':
-        return firstNumber * secondNumber;
+        return this.multiply(firstNumber, secondNumber)
       case 'division':
-        return firstNumber / secondNumber;
+        return this.divide(firstNumber, secondNumber);
     }
   }
 
@@ -80,14 +114,16 @@ class Playground extends Component {
            <VerticalPlaygound currentlySelectedUserOperation={this.state.currentOperation.operator}/>
            <input 
             type="text"
+            isfirstnumber="true"
             value={this.state.firstNumber}
-            onChange={this.handleFirstNumberChange}
-            onBlur={this.handleFirstNumberBlur}/>
+            onChange={this.handleNumberChange}
+            onBlur={this.handleNumberBlur}/>
            <input 
             type="text"
+            isfirstnumber="false"
             value={this.state.secondNumber}
-            onChange={this.handleSecondNumberChange}
-            onBlur={this.handleSecondNumberBlur}/>
+            onChange={this.handleNumberChange}
+            onBlur={this.handleNumberBlur}/>
         </div>
         <div>
           <Result result={result}/>
